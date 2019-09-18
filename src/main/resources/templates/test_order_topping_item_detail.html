@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="ja" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+
+<form action="test_order_topping_item_list" method="post">
+				<h1>商品詳細</h1>
+					<h2 th:text="${itemDetail.name}">じゃがバターベーコン</h2> <br>
+						<br>
+							<p th:text="${itemDetail.description}">マイルドな味付けのカレーに大きくカットしたポテトをのせた、バターとチーズの風味が食欲をそそるお子様でも楽しめる商品です。</p>
+						<br>
+					<h2>サイズ</h2>
+						<input type="radio" name="responsibleCompany" checked="checked">
+							<span class="price">&nbsp;М&nbsp;</span>&nbsp;&nbsp;
+							<span th:text="${#numbers.formatInteger(itemDetail.priceM,2,'COMMA')}">1,380円(税抜)</span>円(税抜)
+						<input type="radio" name="responsibleCompany">
+							<span class="price">&nbsp;Ｌ</span>&nbsp;&nbsp;
+							<span th:text="${#numbers.formatInteger(itemDetail.priceL,2,'COMMA')}">2,380円(税抜)</span>円(税抜)
+					<br>
+					<h2>トッピング：&nbsp;1つにつき
+							<span>&nbsp;М&nbsp;</span>&nbsp;&nbsp;200円(税抜)
+							<span>&nbsp;Ｌ</span>&nbsp;&nbsp;300円(税抜)
+					</h2>			
+							<div th:each="toppingList:${itemDetail.toppingList}">
+								<label th:each="topping:${toppingList}">
+									<input type="checkbox" th:value="${topping.name}" th:text="${topping.name}" name="toppingIdList">
+								</label>
+							<label>数量:</label>
+								<label class="control-label"
+										style="color: red" for="inputError">数量を選択してください</label> <select
+										name="area" class="form-control">
+										<option value="1">1</option>
+										<option value="2">2</option>
+										<option value="3">3</option>
+										<option value="4">4</option>
+										<option value="5">5</option>
+										<option value="6">6</option>
+										<option value="7">7</option>
+										<option value="8">8</option>
+										<option value="9">9</option>
+										<option value="10">10</option>
+										<option value="11">11</option>
+										<option value="12">12</option>
+									</select>
+							</div>
+				<br>
+					<div class="form-group">
+							<span id="total-price">この商品金額：38,000 円(税抜)</span>
+					</div>
+							<p>
+								<input class="form-control btn btn-warning btn-block"
+									type="submit" value="カートに入れる">
+							</p>
+		</form>
+</body>
+</html>

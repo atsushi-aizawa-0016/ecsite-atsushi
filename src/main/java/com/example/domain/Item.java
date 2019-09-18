@@ -1,5 +1,7 @@
 package com.example.domain;
 
+import java.util.List;
+
 public class Item {
 
 	private Integer id;
@@ -9,7 +11,14 @@ public class Item {
 	private Integer priceL;
 	private String imagePath;
 	private boolean deleted;
-//	private List<Topping> toppingList;
+	private List<Topping> toppingList;
+	
+	public List<Topping> getToppingList() {
+		return toppingList;
+	}
+	public void setToppingList(List<Topping> toppingList) {
+		this.toppingList = toppingList;
+	}
 	public Integer getId() {
 		return id;
 	}
@@ -54,9 +63,10 @@ public class Item {
 	}
 	@Override
 	public String toString() {
-		return "Items [id=" + id + ", name=" + name + ", description=" + description + ", priceM=" + priceM
-				+ ", priceL=" + priceL + ", imagePath=" + imagePath + ", deleted=" + deleted + "]";
+		return "Item [id=" + id + ", name=" + name + ", description=" + description + ", priceM=" + priceM + ", priceL="
+				+ priceL + ", imagePath=" + imagePath + ", deleted=" + deleted + ", toppingList=" + toppingList + "]";
 	}
+	
 	
 	
 }

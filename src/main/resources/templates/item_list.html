@@ -26,7 +26,7 @@
 							class="icon-bar"></span>
 					</button>
 					<a class="navbar-brand" href="item_list.html"> <!-- 企業ロゴ --> <img
-						alt="main log" src="img/header_logo.png" height="35">
+						alt="main log" src="/img/header_logo.png" height="35">
 					</a>
 				</div>
 
@@ -80,19 +80,16 @@
 					<tbody>
 						<tr th:each="itemList:${allItemList}">
 							<th th:each="item:${itemList}">
-								<a href="item_detail.html">
-								<img src="img/1.jpg" class="img-responsive img-rounded" width="200" height="600"></a>
-								<span th:text="${item.name}">dummy</span><br>
+								<a th:href="@{'/showDetail/showDetailItem?id=' + ${item.id}}">
+									<img th:src="@{'/img/' + ${item.imagePath}}" class="img-responsive img-rounded" width="200" height="600">
+								</a>
+								<a th:href="@{'/showDetail/showDetailItem?id=' + ${item.id}}">
+									<span th:text="${item.name}">dummy</span><br>
+								</a>
 								<span th:text="${item.priceM}">dummy</span><br>
 								<span th:text="${item.priceL}">dummy</span><br>
 							</th>
-						
 						</tr>
-					
-					
-					
-					
-						
 					</tbody>
 				</table>
 

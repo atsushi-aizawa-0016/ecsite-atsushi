@@ -44,7 +44,7 @@ public class RegisterUserController {
 		// フォームからドメインにプロパティ値をコピー
 		BeanUtils.copyProperties(form, user);
 		registerUserService.insert(user);
-		return "redirect:/register/toLogin";
+		return "redirect:/toLogin";
 	}
 
 }

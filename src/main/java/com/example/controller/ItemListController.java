@@ -35,6 +35,6 @@ public class ItemListController {
 		}
 		allItemList.add(item3List);
 		model.addAttribute("allItemList", allItemList);
-		return "item_list";
+		return "test_order_topping_item_list";
 	}
 }
