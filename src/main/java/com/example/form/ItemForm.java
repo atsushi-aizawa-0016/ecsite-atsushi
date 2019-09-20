@@ -2,7 +2,7 @@ package com.example.form;
 
 import java.util.List;
 
-public class ShoppingCartForm {
+public class ItemForm {
 
 	/** 商品ID */
 	private String itemId;
@@ -29,7 +29,6 @@ public class ShoppingCartForm {
 	public Integer getTotalPrice() {
 		return 0;
 	}
-
 	
 	public Integer getIntPreUserId() {
 		return Integer.parseInt(preUserId);
@@ -109,5 +108,6 @@ public class ShoppingCartForm {
 		return "ExecuteShoppingCartForm [itemId=" + itemId + ", size=" + size + ", quantity=" + quantity
 				+ ", toppingIdList=" + toppingIdList + ", userId=" + userId + ", status=" + status + "]";
 	}
-
+	
+	
 }

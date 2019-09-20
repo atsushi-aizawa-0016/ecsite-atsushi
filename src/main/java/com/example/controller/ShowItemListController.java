@@ -12,8 +12,8 @@ import com.example.domain.Item;
 import com.example.service.ItemListService;
 
 @Controller
-@RequestMapping("")
-public class ItemListController {
+@RequestMapping("/item")
+public class ShowItemListController {
 	
 	@Autowired
 	private ItemListService itemListService;
@@ -35,6 +35,6 @@ public class ItemListController {
 		}
 		allItemList.add(item3List);
 		model.addAttribute("allItemList", allItemList);
-		return "test_order_topping_item_list";
+		return "item_list";
 	}
 }

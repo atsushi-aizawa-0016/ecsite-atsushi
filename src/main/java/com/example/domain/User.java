@@ -1,5 +1,7 @@
 package com.example.domain;
 
+
+
 public class User {
 
 	private Integer id;
@@ -9,8 +11,22 @@ public class User {
 	private String zipcode;
 	private String address;
 	private String telephone;
-	private String confirmationPassword;
 	
+	public User() {
+
+	}
+	
+	public User(Integer id, String name, String email, String password, String zipcode, String address,
+			String telephone) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.email = email;
+		this.password = password;
+		this.zipcode = zipcode;
+		this.address = address;
+		this.telephone = telephone;
+	}
 	
 	public Integer getId() {
 		return id;
@@ -54,18 +70,13 @@ public class User {
 	public void setTelephone(String telephone) {
 		this.telephone = telephone;
 	}
-	public String getConfirmationPassword() {
-		return confirmationPassword;
-	}
-	public void setConfirmationPassword(String confirmationPassword) {
-		this.confirmationPassword = confirmationPassword;
-	}
+
 	@Override
 	public String toString() {
 		return "User [id=" + id + ", name=" + name + ", email=" + email + ", password=" + password + ", zipcode="
-				+ zipcode + ", address=" + address + ", telephone=" + telephone + ", confirmationPassword="
-				+ confirmationPassword + "]";
+				+ zipcode + ", address=" + address + ", telephone=" + telephone + "]";
 	}
+
 	
 	
 	
