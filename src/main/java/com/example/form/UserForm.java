@@ -4,7 +4,7 @@ import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
-public class RegisterUserForm {
+public class UserForm {
 	
 	private String id;
 	@NotBlank(message="名前入力必須")

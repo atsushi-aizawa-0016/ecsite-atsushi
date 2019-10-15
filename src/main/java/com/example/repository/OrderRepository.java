@@ -236,10 +236,6 @@ public class OrderRepository {
 		Item item = template.queryForObject(sql, param, ITEM_ROW_MAPPER);
 		return item;
 	}
-
-	public void insertByOrderItem(OrderItem orderItem) {
-		String sql = "INSERT INTO order_items(item_id,order_id,quantity,size) VALUE(:itemId,:orderId,:quantity,:size);";
-	}
 	
 	/**
 	 * 注文情報を取得します.

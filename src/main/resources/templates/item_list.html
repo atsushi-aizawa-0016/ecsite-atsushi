@@ -37,7 +37,7 @@ xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 					<p class="navbar-text navbar-right">
 						<a href="cart_list.html" class="navbar-link">ショッピングカート</a>&nbsp;&nbsp;
 						<a href="order_history.html" class="navbar-link">注文履歴</a>&nbsp;&nbsp;
-						<a href="login.html" class="navbar-link">ログイン</a>&nbsp;&nbsp;
+						<a th:href="login.html" class="navbar-link">ログイン</a>&nbsp;&nbsp;
 						<a href="item_list.html" class="navbar-link">ログアウト</a>
 					</p>
 				</div>
@@ -55,7 +55,7 @@ xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 						<div class="panel-title">商品を検索する</div>
 					</div>
 					<div class="panel-body">
-						<form method="post" th:action="@{/showDetailItem}" class="form-horizontal">
+						<form method="post" th:action="@{/item/showDetailItem}" class="form-horizontal">
 							<div class="form-group">
 								<label for="code" class="control-label col-sm-2">商品名</label>
 								<div class="col-sm-9">
@@ -81,10 +81,10 @@ xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 					<tbody>
 						<tr th:each="itemList:${allItemList}">
 							<th th:each="item:${itemList}">
-								<a th:href="@{'/showDetail/showDetailItem?id=' + ${item.id}}">
+								<a th:href="@{'/item/showItemDetail?id=' + ${item.id}}">
 									<img th:src="@{'/img/' + ${item.imagePath}}" class="img-responsive img-rounded" width="200" height="600">
 								</a>
-								<a th:href="@{'/showDetail/showDetailItem?id=' + ${item.id}}">
+								<a th:href="@{'/item/showItemDetail?id=' + ${item.id}}">
 									<span th:text="${item.name}">dummy</span><br>
 								</a>
 								<span th:text="${item.priceM}">dummy</span><br>

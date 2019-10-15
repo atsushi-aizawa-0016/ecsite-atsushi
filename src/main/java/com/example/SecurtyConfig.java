@@ -43,21 +43,16 @@ public class SecurtyConfig extends WebSecurityConfigurerAdapter{
 	protected void configure(HttpSecurity http) throws Exception{
 		
 		http.authorizeRequests()
-			.antMatchers("/register"
-						,"/register/toInsert"
-						,"/register/insert"
-						,"/"
-						,"/item"
-						,"/item/showItemList"
-						,"/showDetail"
-						,"/showDetail/showDetailItem"
+			.antMatchers("/user/**" //ユーザーがパスをダイレクトに書いても直接観れる部分
+						,"/item/**"//contoroller内の最初のパス以降が全てユーザーが直接アクセスできるなら/**で全ての意味になる
+						,"/toLogin"
 						).permitAll()
 			.anyRequest().authenticated();
 		
 		http.formLogin()
-			.loginPage("/")
-			.loginProcessingUrl("/login")
-			.failureUrl("/?error=false")
+			.loginPage("/user") //コントローラーの
+			.loginProcessingUrl("/toLogin")
+			.failureUrl("/toLogin?error=false")
 			.defaultSuccessUrl("/item/showItemList",false)
 			.usernameParameter("email")
 			.passwordParameter("password"); 

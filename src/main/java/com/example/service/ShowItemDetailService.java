@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 import com.example.domain.Item;
 import com.example.domain.Topping;
 import com.example.repository.ShowItemDetailRepository;
-import com.example.repository.ToppingRepository;
+import com.example.repository.ToppingRepositoryShoki;
 
 @Service
 public class ShowItemDetailService {
@@ -17,7 +17,7 @@ public class ShowItemDetailService {
 	private ShowItemDetailRepository showItemDetailRepository;
 	
 	@Autowired
-	private ToppingRepository toppingRepository;
+	private ToppingRepositoryShoki toppingRepository;
 	
 	public Item showDetail(Integer id) {
 		Item item = showItemDetailRepository.load(id);

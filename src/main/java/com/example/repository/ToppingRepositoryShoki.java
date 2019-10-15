@@ -12,31 +12,23 @@ import org.springframework.stereotype.Repository;
 import com.example.domain.Topping;
 
 @Repository
-public class ToppingRepository {
-
-	@Autowired
-	private NamedParameterJdbcTemplate template;
+public class ToppingRepositoryShoki {
 
 	private static final RowMapper<Topping> TOPPING_ROW_MAPPER = (rs, i) -> {
 		Topping topping = new Topping();
 		topping.setId(rs.getInt("id"));
 		topping.setName(rs.getString("name"));
 		topping.setPriceM(rs.getInt("price_m"));
-		topping.setPriceL(rs.getInt("price_l"));
+		topping.setPriceL(rs.getInt("price_L"));
 		return topping;
 	};
+	@Autowired
+	private NamedParameterJdbcTemplate template;
 	
-	public List<Topping> findAll(){
-		String sql = "SELECT id,name,price_m,price_l FROM toppings";
+	public List<Topping> load() {
+		String sql = "SELECT id,name,price_m,price_l from toppings;";
 		SqlParameterSource param = new MapSqlParameterSource();
 		List<Topping> toppingList = template.query(sql, param, TOPPING_ROW_MAPPER);
 		return toppingList;
-	}
-	
-	public Topping findById(Integer id){
-		String sql = "SELECT id,name,price_m,price_l FROM toppings WHERE id = :id";
-		SqlParameterSource param = new MapSqlParameterSource().addValue("id", id);
-		Topping topping = template.queryForObject(sql, param, TOPPING_ROW_MAPPER);
-		return topping;
 	}
 }

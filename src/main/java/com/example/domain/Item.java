@@ -12,6 +12,7 @@ public class Item {
 	private String imagePath;
 	private boolean deleted;
 	private List<Topping> toppingList;
+	private List<List<Topping>> allToppingList;
 	
 	public List<Topping> getToppingList() {
 		return toppingList;
@@ -61,10 +62,17 @@ public class Item {
 	public void setDeleted(boolean deleted) {
 		this.deleted = deleted;
 	}
+	public List<List<Topping>> getAllToppingList() {
+		return allToppingList;
+	}
+	public void setAllToppingList(List<List<Topping>> allToppingList) {
+		this.allToppingList = allToppingList;
+	}
 	@Override
 	public String toString() {
 		return "Item [id=" + id + ", name=" + name + ", description=" + description + ", priceM=" + priceM + ", priceL="
-				+ priceL + ", imagePath=" + imagePath + ", deleted=" + deleted + ", toppingList=" + toppingList + "]";
+				+ priceL + ", imagePath=" + imagePath + ", deleted=" + deleted + ", toppingList=" + toppingList
+				+ ", allToppingList=" + allToppingList + "]";
 	}
 	
 	

@@ -30,6 +30,23 @@ public class UserRepository {
 	@Autowired
 	private NamedParameterJdbcTemplate template;
 	
+	public User login(User user) {
+		SqlParameterSource param = new MapSqlParameterSource().addValue("email", user.getEmail()).addValue("password", user.getPassword()) ;
+		String sql = "SELECT \n" + 
+				"id,name,email,password,zipcode,address,telephone \n" + 
+				"FROM \n" + 
+				"users \n" + 
+				"WHERE email = :email \n" + 
+				"and password = :password\n" + 
+				";";
+		List<User> userList = template.query(sql, param, USER_ROW_MAPPER);
+		if (userList.size() == 0) {
+			return null;
+		}else {
+			return userList.get(0);			
+		}
+	}
+	
 	/**
 	 * 管理者情報の挿入.
 	 * 
@@ -41,30 +58,36 @@ public class UserRepository {
 		template.update(sql, param);
 	}
 	
-	/**
-	 * メールアドレスから管理者情報を取得する.
-	 * 
-	 * @param email メールアドレス
-	 * @return 管理者情報 存在しない場合nullを返す
-	 */
-	public User findByEmail(String email) {
-		String sql = "SELECT id,name,email,password,zipcode,address,telephone FROM users WHERE email=:email;";
-		SqlParameterSource param = new MapSqlParameterSource().addValue("email", email);
+	public User findByUserId(Integer userId) {
+		SqlParameterSource param = new MapSqlParameterSource().addValue("userId", userId);
+		String sql = "SELECT \n" + 
+				"id,name,email,password,zipcode,address,telephone \n" + 
+				"FROM \n" + 
+				"users \n" + 
+				"WHERE id = :userId \n" + 
+				";";
 		List<User> userList = template.query(sql, param, USER_ROW_MAPPER);
 		if (userList.size() == 0) {
 			return null;
+		}else {
+			return userList.get(0);			
 		}
-		return userList.get(0);
 	}
 	
-//	public User findByMailAddress(String email, String password) {
-//		String sql = "select id,name,email,password,zipcode,address,telephone from users where email=:email and password=:password";
-//		SqlParameterSource param = new MapSqlParameterSource().addValue("email", email).addValue("password",password);
-//		List<User> userList = template.query(sql, param, USER_ROW_MAPPER);
-//		if (userList.size() == 0) {
-//			return null;
-//		}
-//		return userList.get(0);
-//	}
+	public User findByEmail(String email) {
+		SqlParameterSource param = new MapSqlParameterSource().addValue("email", email);
+		String sql = "SELECT \n" + 
+				"id,name,email,password,zipcode,address,telephone \n" + 
+				"FROM \n" + 
+				"users \n" + 
+				"WHERE email = :email \n" + 
+				";";
+		List<User> userList = template.query(sql, param, USER_ROW_MAPPER);
+		if (userList.size() == 0) {
+			return null;
+		}else {
+			return userList.get(0);			
+		}
+	}
 	
 }

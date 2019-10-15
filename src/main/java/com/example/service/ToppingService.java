@@ -14,7 +14,11 @@ public class ToppingService {
 	@Autowired
 	private ToppingRepository toppingRepository;
 	
-	public List<Topping> showTopping() {
-		return toppingRepository.load();
+	public List<Topping> findAll() {
+		return toppingRepository.findAll();
+	}
+	
+	public Topping findById(Integer id){
+		return toppingRepository.findById(id);
 	}
 }

@@ -6,10 +6,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 
 @Controller
-@RequestMapping("/")
+@RequestMapping("/toLogin")
 public class LoginUserController {
 
-	@RequestMapping("/")
+	@RequestMapping("")
 	public String toLogin(Model model, String error) {
 
 		System.err.println("login error:" + error);

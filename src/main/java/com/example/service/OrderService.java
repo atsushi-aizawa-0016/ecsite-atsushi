@@ -12,7 +12,7 @@ import com.example.domain.Order;
 import com.example.domain.OrderItem;
 import com.example.domain.OrderTopping;
 import com.example.form.OrderItemForm;
-import com.example.form.ShoppingCartForm;
+import com.example.form.ShoppingcartForm;
 import com.example.repository.OrderItemRepository;
 import com.example.repository.OrderRepository;
 import com.example.repository.OrderToppingRepository;
@@ -72,7 +72,7 @@ public class OrderService {
 	 * @param orderId 主キー
 	 * @return OrderItemオブジェクト
 	 */
-	private OrderItem createOrderItem(ShoppingCartForm form, Integer orderId) {
+	private OrderItem createOrderItem(ShoppingcartForm form, Integer orderId) {
 		OrderItem orderItem = new OrderItem();
 		orderItem.setItemId(form.getIntItemId());
 		orderItem.setOrderId(orderId);
@@ -82,16 +82,16 @@ public class OrderService {
 	}
 	
 	@SuppressWarnings("null")
-	public Order insert(ShoppingCartForm form) {
+	public Order insert(ShoppingcartForm form) {
 		
-		Order checkOrder = orderRepository.findByUserIdAndStatus(form.getIntUserId(), form.getIntStatus());
+		Order checkOrder = orderRepository.findByUserIdAndStatus(form.getUserId(), form.getIntStatus());
 		
 		OrderItem orderItem = null;
 		Integer orderId = null;
 		
 		if (checkOrder == null) {   //カートの中身が空の処理
 			Order order = new Order();
-			order.setUserId(form.getIntUserId());
+			order.setUserId(form.getUserId());
 			order.setStatus(form.getIntStatus());
 			order.setTotalPrice(0);
 			orderId = orderRepository.insert(order);

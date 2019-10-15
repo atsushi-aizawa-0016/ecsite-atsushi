@@ -2,29 +2,22 @@ package com.example.form;
 
 import java.util.List;
 
-public class ShoppingCartForm {
+public class ShoppingcartForm {
 
 	/** 商品ID */
 	private String itemId;
-
 	/** サイズ */
 	private String size;
-
 	/** 数量 */
 	private String quantity;
-
 	/** トッピングIDリスト */
 	private List<Integer> toppingIdList;
-
 	/** ユーザID */
-	private String userId;
-
+	private Integer userId;
 	/** 注文状態 */
 	private String status;
-
 	/** 仮ユーザID */
 	private String preUserId;
-
 
 	public Integer getTotalPrice() {
 		return 0;
@@ -50,15 +43,7 @@ public class ShoppingCartForm {
 	}
 
 
-	public Integer getIntUserId() {
-		return Integer.parseInt(userId);
-	}
-	public String getUserId() {
-		return userId;
-	}
-	public void setUserId(String userId) {
-		this.userId = userId;
-	}
+	
 
 	public char getCharSize() {
 		return size.charAt(0);
@@ -104,10 +89,23 @@ public class ShoppingCartForm {
 	}
 
 
+	public Integer getUserId() {
+		return userId;
+	}
+
+
+	public void setUserId(Integer userId) {
+		this.userId = userId;
+	}
+
+
 	@Override
 	public String toString() {
-		return "ExecuteShoppingCartForm [itemId=" + itemId + ", size=" + size + ", quantity=" + quantity
-				+ ", toppingIdList=" + toppingIdList + ", userId=" + userId + ", status=" + status + "]";
+		return "ShoppingcartForm [itemId=" + itemId + ", size=" + size + ", quantity=" + quantity + ", toppingIdList="
+				+ toppingIdList + ", userId=" + userId + ", status=" + status + ", preUserId=" + preUserId + "]";
 	}
+
+
+	
 
 }

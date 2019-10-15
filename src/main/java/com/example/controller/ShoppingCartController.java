@@ -6,7 +6,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.example.form.ShoppingCartForm;
+import com.example.form.ShoppingcartForm;
 import com.example.repository.OrderToppingRepository;
 
 @Controller
@@ -14,8 +14,8 @@ import com.example.repository.OrderToppingRepository;
 public class ShoppingCartController {
 	
 	@ModelAttribute
-	public ShoppingCartForm setUpSoppingCartForm() {
-		return new ShoppingCartForm();
+	public ShoppingcartForm setUpSoppingCartForm() {
+		return new ShoppingcartForm();
 	}
 	
 	@Autowired

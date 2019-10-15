@@ -19,12 +19,12 @@ import com.example.repository.UserRepository;
 public class LoginUserService implements UserDetailsService {
 	
 	@Autowired
-	private UserRepository registerUserRepository;
+	private UserRepository userRepository;
 	
 	@Override
 	public UserDetails loadUserByUsername(String email)
 			throws UsernameNotFoundException {
-		User user = registerUserRepository.findByEmail(email);
+		User user = userRepository.findByEmail(email);
 		if (user == null) {
 			throw new UsernameNotFoundException("そのEmailは登録されていません");
 		}
